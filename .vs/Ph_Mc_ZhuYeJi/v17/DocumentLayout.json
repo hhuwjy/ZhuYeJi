@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\userstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\userstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\ph_mc_zhuyeji.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\ph_mc_zhuyeji.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\toolapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\keyencecomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\keyencecomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\userstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\userstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\readfromexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +42,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ReadFromExcel.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\ReadFromExcel.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\ReadFromExcel.cs",
@@ -47,12 +51,24 @@
               "ViewState": "AQIAAJUBAAAAAAAAAAAmwIMBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T02:17:27.84Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Ph_Mc_ZhuYeJi.csproj",
+              "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj",
+              "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj",
+              "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj",
+              "RelativeToolTip": "Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAC8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-04T08:51:22.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ToolAPI.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\ToolAPI.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\ToolAPI.cs",
@@ -60,12 +76,11 @@
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\ToolAPI.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T07:15:27.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T07:15:27.498Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "GrpcSubscribeNodes.xml",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes.xml",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes.xml",
@@ -77,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "KeyenceComm.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
@@ -85,31 +100,30 @@
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
               "ViewState": "AQIAAFoAAAAAAAAAAAAmwDcAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T02:17:11.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-03T02:17:11.191Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "UserStruct.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\UserStruct.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\UserStruct.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\UserStruct.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\UserStruct.cs",
-              "ViewState": "AQIAADsBAAAAAAAAAAAAwGABAAAvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFcBAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T06:51:45.054Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\Program.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\Program.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\Program.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\Program.cs",
-              "ViewState": "AQIAABABAAAAAAAAAAAQwBQBAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T06:27:49.167Z",
               "EditorCaption": ""

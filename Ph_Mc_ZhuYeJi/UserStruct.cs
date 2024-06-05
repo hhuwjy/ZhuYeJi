@@ -373,6 +373,15 @@ namespace Ph_Mc_ZhuYeJi
 
         }
 
+        public struct OneSecAlarmStruct_MC
+        {
+            public string varType;  //变量类型
+            public string varName;  //变量名
+            public string varAnnotation;  //描述
+            public double varOffset;  //地址偏移量
+
+        }
+
 
         #endregion
 

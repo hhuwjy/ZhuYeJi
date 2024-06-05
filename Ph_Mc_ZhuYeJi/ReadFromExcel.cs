@@ -107,7 +107,7 @@ namespace Ph_Mc_ZhuYeJi
                         if (!string.IsNullOrEmpty(row.GetCell(j).ToString()) && !string.IsNullOrWhiteSpace(row.GetCell(j).ToString()))
                         {
                             v.stationName = Convert.ToString(sheetName);
-                            if (j == 1)
+                            if (j == getCellIndexByName(headerRow, "偏移地址"))
                             {
                                 v.varName = Convert.ToString(row.GetCell(j));
                                 if (!(string.IsNullOrEmpty(v.varName) || string.IsNullOrWhiteSpace(v.varName)))
@@ -116,17 +116,17 @@ namespace Ph_Mc_ZhuYeJi
                                     //var ms = r.Matches(v.varName);
                                     //if (ms.Count > 0)
                                     //v.varIndex = Convert.ToInt32(ms.ToArray()[0].Value);
-                                     v.varOffset = Convert.ToString(row.GetCell(j));
+                                     v.varOffset = Convert.ToInt32(row.GetCell(j));
                                    
                                 }
 
                             }
-                            else if (j == 2)
+                            else if (j == getCellIndexByName(headerRow, "点位名"))
                             {
                                 v.varAnnotation = Convert.ToString(row.GetCell(j));
 
                             }
-                            else if (j == 3)
+                            else if (j == getCellIndexByName(headerRow, "数据类型"))
                             {
                                 v.varType = Convert.ToString(row.GetCell(j));
 
@@ -142,7 +142,7 @@ namespace Ph_Mc_ZhuYeJi
         }
 
         //从Excel中读取1秒的数据信息
-        public OneSecInfoStruct_MC[] ReadOneSecInfo_Excel(XSSFWorkbook xssWorkbook, string sheetName)
+        public OneSecInfoStruct_MC[] ReadOneSecInfo_Excel(XSSFWorkbook xssWorkbook, string sheetName,bool isHexadecimal)
         {
             DataTable dtTable = new DataTable();
             List<string> rowList = new List<string>();
@@ -187,36 +187,89 @@ namespace Ph_Mc_ZhuYeJi
 
                 for (int j = row.FirstCellNum; j < cellCount; j++)
                 {
-                    if (j == 1)
+                    if (j == getCellIndexByName(headerRow, "地址/标签"))
                     {
                         v.varName = Convert.ToString(row.GetCell(j).StringCellValue).Trim();
-                        if (!(string.IsNullOrEmpty(v.varName) || string.IsNullOrWhiteSpace(v.varName)))
-                        {
-                            Regex r = new Regex(@"(?i)(?<=\[)(.*)(?=\])");//中括号[]
-                            var ms = r.Matches(v.varName);
-                            if (ms.Count > 0)
-                                v.varIndex = Convert.ToInt16(ms.ToArray()[0].Value);
-                        }
                     }
-                    else if (j == 2)
+                    else if (j == getCellIndexByName(headerRow, "偏移地址"))
+                    {
+                        v.varOffset = Convert.ToInt32(Convert.ToString(row.GetCell(j)),16);
+                    }
+                    else if (j == getCellIndexByName(headerRow, "点位名"))
                     {
                         v.varAnnotation = Convert.ToString(row.GetCell(j));
 
-                        //if (string.IsNullOrWhiteSpace(v.varAnnotation) || string.IsNullOrEmpty(v.varAnnotation))
-                        //{
-                        //    v.varIndex = -1;
-                        //}
-                        //else
-                        //{
-                        //    v.varIndex = i - 1;
-                        //}
+                    }
+                    else if (j == getCellIndexByName(headerRow, "数据类型"))
+                    {
+                        v.varType = Convert.ToString(row.GetCell(j));
+                    }
+                }
+                retList.Add(v);
+            }
 
-                        //varIndex
+            return retList.ToArray();
+        }
+
+        public OneSecAlarmStruct_MC[] ReadOneSecAlarm_Excel(XSSFWorkbook xssWorkbook, string sheetName)
+        {
+            DataTable dtTable = new DataTable();
+            List<string> rowList = new List<string>();
 
 
+
+            //sheet = xssWorkbook.GetSheetAt(0);
+            ISheet sheet = xssWorkbook.GetSheet(sheetName);
+            if (sheet == null)
+            {
+                Console.WriteLine(sheetName + "页不存在");
+                return null;
+
+            }
+
+
+            IRow headerRow = sheet.GetRow(0);
+            int cellCount = headerRow.LastCellNum;
+
+            List<OneSecAlarmStruct_MC> retList = new List<OneSecAlarmStruct_MC>();
+
+
+            for (int j = 0; j < cellCount; j++)
+            {
+                ICell cell = headerRow.GetCell(j);
+                if (cell == null || string.IsNullOrWhiteSpace(cell.ToString())) continue;
+                {
+                    dtTable.Columns.Add(cell.ToString());
+                }
+            }
+            for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
+            {
+                IRow row = sheet.GetRow(i);
+                if (row == null) continue;
+                if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
+
+                string str = Convert.ToString(row.GetCell(1));
+                if (string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str)) continue;
+
+
+                var v = new OneSecAlarmStruct_MC();
+
+                for (int j = row.FirstCellNum; j < cellCount; j++)
+                {
+                    if (j == getCellIndexByName(headerRow, "地址/标签"))
+                    {
+                        v.varName = Convert.ToString(row.GetCell(j).StringCellValue).Trim();
+                    }
+                    else if (j == getCellIndexByName(headerRow, "偏移地址"))
+                    {
+                        v.varOffset = Convert.ToDouble(row.GetCell(j));
+                    }
+                    else if (j == getCellIndexByName(headerRow, "点位名"))
+                    {
+                        v.varAnnotation = Convert.ToString(row.GetCell(j));
 
                     }
-                    else if (j == 3)
+                    else if (j == getCellIndexByName(headerRow, "数据类型"))
                     {
                         v.varType = Convert.ToString(row.GetCell(j));
                     }
@@ -229,7 +282,7 @@ namespace Ph_Mc_ZhuYeJi
 
 
         //从Excel中读取DeviceInfo的数据信息 
-        public DeviceInfoConSturct_MC[] ReadOneDeviceInfoConSturctInfo_Excel(XSSFWorkbook xssWorkbook, string sheetName, int columnNumber)
+        public DeviceInfoConSturct_MC[] ReadOneDeviceInfoConSturctInfo_Excel(XSSFWorkbook xssWorkbook, string sheetName, string columnName)
         {
 
             DataTable dtTable = new DataTable();
@@ -265,41 +318,30 @@ namespace Ph_Mc_ZhuYeJi
                 if (row == null) continue;
                 if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
 
-                string str = Convert.ToString(row.GetCell(columnNumber - 1));
+                int columnNumber = getCellIndexByName(headerRow, columnName);
+                string str = Convert.ToString(row.GetCell(columnNumber));
                 if (string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str)) continue;
 
                 var v = new DeviceInfoConSturct_MC();
 
                 for (int j = row.FirstCellNum; j < cellCount; j++)
                 {
-                    if (j == 0)
+                    if (j == getCellIndexByName(headerRow, "工位信号"))
                     {
                         v.stationNumber = Convert.ToInt32(row.GetCell(j).NumericCellValue);
                     }
-                    else if (j == 1)
+                    else if (j == getCellIndexByName(headerRow, "工位名称"))
                     {
                         v.stationName = Convert.ToString(row.GetCell(j));
-
-
                     }
-                    else if (j == (columnNumber - 1))
+                    else if (j == (columnNumber))
                     {
-
-                        //varIndex
                         string temp = Convert.ToString(row.GetCell(j));
-                        if (!(string.IsNullOrEmpty(temp) || string.IsNullOrWhiteSpace(temp)))
-                        {
-                            Regex r = new Regex(@"(?i)(?<=\[)(.*)(?=\])");//中括号[]
-                            var ms = r.Matches(temp);
-                            if (ms.Count > 0)
-                                v.varInde = Convert.ToInt16(ms.ToArray()[0].Value);
-                        }
-
                         //varName
-                        int index = temp.IndexOf('[');
-                        if (index > -1)
-                            v.varName = temp.Substring(0, index);
+                        v.varName = temp;
 
+                        //varOffset
+                        v.varOffset = GetNumbersFromString(temp); 
 
                         //varType
                         temp = Convert.ToString(headerRow.GetCell(j));
@@ -367,8 +409,6 @@ namespace Ph_Mc_ZhuYeJi
             }
             return allConvertNode;
         }
-
-
 
 
         //读取封装设备信息
@@ -465,6 +505,98 @@ namespace Ph_Mc_ZhuYeJi
 
 
         }
+         
+
+        /// <summary>
+        /// 根据首行单元格的值获取此单元格所在的列索引
+        /// </summary>
+        /// <param name="headerRow">首行</param>
+        /// <param name="cellValue">单元格的值</param>
+        /// <returns>-1：获取失败；正整数为单元格所在的列索引</returns>
+        public int getCellIndexByName(IRow row, string cellValue)
+        {
+
+            int result = -1;
+
+            int cellCount = row.LastCellNum;
+
+            for (int j = 0; j < cellCount; j++)
+            {
+                ICell cell = row.GetCell(j);
+                if (string.Equals(cell.StringCellValue.Trim(), cellValue))
+                {
+                    result = j;
+                }
+            }
+
+            return result;
+        }
+         
+
+        /// <summary>
+        /// 从字符串中获取数字
+        /// </summary>
+        /// <param name="str">原始字符串</param>
+        /// <returns>字符串中的数据 -1：未获取到字符串中的数据</returns>
+        public int GetNumbersFromString(string str)
+        {
+            int result = -1;
+            string strNum = string.Empty;
+
+            //取出字符串中所有的数字   
+            if (!string.IsNullOrEmpty(str) && !string.IsNullOrWhiteSpace(str))
+            { 
+                strNum = Regex.Replace(str, "[a-z]", "", RegexOptions.IgnoreCase); 
+            }
+
+
+            if (string.IsNullOrEmpty(strNum) || string.IsNullOrWhiteSpace(strNum) || !StringIsNumbers(strNum))
+            {
+                result = -1;
+            }
+            else
+            {
+                result = Convert.ToInt32(strNum);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 判断字符串是否为纯数字字符串
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <returns>true：字符串是纯数字字符串 false：字符串不是纯数字字符串</returns>
+        public bool StringIsNumbers(string strNum)
+        {
+            bool result = true;
+            if (!string.IsNullOrEmpty(strNum) && !string.IsNullOrWhiteSpace(strNum))
+            {
+                foreach (char chrTemp in strNum)
+                {
+                    if (!Char.IsNumber(chrTemp))
+                    {
+                        result = false;
+                    }
+                }
+            }
+            else
+            {
+                result = false;
+
+            }
+           
+
+            return result;
+        }
+
+
+
+
+
+
+
+
 
 
 
