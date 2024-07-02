@@ -10,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
 using static Ph_Mc_ZhuYeJi.UserStruct;
 
@@ -109,18 +110,25 @@ namespace Ph_Mc_ZhuYeJi
                             v.stationName = Convert.ToString(sheetName);
                             if (j == getCellIndexByName(headerRow, "偏移地址"))
                             {
-                                v.varName = Convert.ToString(row.GetCell(j));
+                                //v.varName = Convert.ToString(row.GetCell(j));
                                 if (!(string.IsNullOrEmpty(v.varName) || string.IsNullOrWhiteSpace(v.varName)))
                                 {
                                     //Regex r = new Regex(@"(?i)(?<=\[)(.*)(?=\])");//中括号[]
                                     //var ms = r.Matches(v.varName);
                                     //if (ms.Count > 0)
                                     //v.varIndex = Convert.ToInt32(ms.ToArray()[0].Value);
-                                     v.varOffset = Convert.ToInt32(row.GetCell(j));
-                                   
+                                    // v.varOffset = Convert.ToInt32(row.GetCell(j));
+                                    string temp = Convert.ToString(row.GetCell(j));
+                                    v.varOffset = Convert.ToInt32(temp);
+
                                 }
 
                             }
+                            else if (j == getCellIndexByName(headerRow, "地址/标签"))
+                            {
+                                v.varName = Convert.ToString(row.GetCell(j));
+                            }
+
                             else if (j == getCellIndexByName(headerRow, "点位名"))
                             {
                                 v.varAnnotation = Convert.ToString(row.GetCell(j));
@@ -130,6 +138,17 @@ namespace Ph_Mc_ZhuYeJi
                             {
                                 v.varType = Convert.ToString(row.GetCell(j));
 
+                            }
+
+                            else if (j == getCellIndexByName(headerRow, "倍率"))
+                            {
+                                string temp = Convert.ToString(row.GetCell(j));
+                                v.varMagnification = GetNumbersFromString(temp);
+                            }
+
+                            else if (j == getCellIndexByName(headerRow, "所属工位号"))
+                            {
+                                v.StationNumber = Convert.ToInt32(row.GetCell(j).NumericCellValue);
                             }
                         }
                     }
@@ -193,7 +212,28 @@ namespace Ph_Mc_ZhuYeJi
                     }
                     else if (j == getCellIndexByName(headerRow, "偏移地址"))
                     {
-                        v.varOffset = Convert.ToInt32(Convert.ToString(row.GetCell(j)),16);
+                        if(!isHexadecimal)
+                        {
+                            string temp = Convert.ToString(row.GetCell(j));
+                            v.varOffset = GetNumbersFromString(temp);
+                        }
+                        else
+                        {
+                            string temp = HexStringToDecimalString(Convert.ToString(row.GetCell(j)));
+
+                            if (temp.Length == 4)
+                            {
+                                v.varOffset = GetNumbersFromString(InsertZeroBeforeLast(temp));
+
+                            }
+                            else
+                            {
+                                v.varOffset = GetNumbersFromString(temp);
+
+                            }
+                                                      
+                        }
+
                     }
                     else if (j == getCellIndexByName(headerRow, "点位名"))
                     {
@@ -262,7 +302,9 @@ namespace Ph_Mc_ZhuYeJi
                     }
                     else if (j == getCellIndexByName(headerRow, "偏移地址"))
                     {
-                        v.varOffset = Convert.ToDouble(row.GetCell(j));
+                        // v.varOffset = Convert.ToDouble(row.GetCell(j));
+                        string temp = Convert.ToString(row.GetCell(j));
+                        v.varOffset = GetNumbersFromString(temp);
                     }
                     else if (j == getCellIndexByName(headerRow, "点位名"))
                     {
@@ -326,7 +368,7 @@ namespace Ph_Mc_ZhuYeJi
 
                 for (int j = row.FirstCellNum; j < cellCount; j++)
                 {
-                    if (j == getCellIndexByName(headerRow, "工位信号"))
+                    if (j == getCellIndexByName(headerRow, "工位序号"))
                     {
                         v.stationNumber = Convert.ToInt32(row.GetCell(j).NumericCellValue);
                     }
@@ -334,6 +376,16 @@ namespace Ph_Mc_ZhuYeJi
                     {
                         v.stationName = Convert.ToString(row.GetCell(j));
                     }
+
+                    else if (j == getCellIndexByName(headerRow, "后工位序号"))
+                    {
+                        v.nextStationNumber = Convert.ToInt32(row.GetCell(j).NumericCellValue);
+                    }
+                    else if (j == getCellIndexByName(headerRow, "生成虚拟码"))
+                    {
+                        v.pseudoCode = Convert.ToInt32(row.GetCell(j).NumericCellValue);
+                    }
+
                     else if (j == (columnNumber))
                     {
                         string temp = Convert.ToString(row.GetCell(j));
@@ -361,9 +413,82 @@ namespace Ph_Mc_ZhuYeJi
         }
 
 
+        public DeviceInfoDisSturct_MC[] ReadOneDeviceInfoDisSturctInfo_Excel(XSSFWorkbook xssWorkbook, string sheetName, string columnName)
+        {
+
+            DataTable dtTable = new DataTable();
+            List<string> rowList = new List<string>();
 
 
-       
+            ISheet sheet = xssWorkbook.GetSheet(sheetName);
+            if (sheet == null)
+            {
+                Console.WriteLine(sheetName + "页不存在");
+                return null;
+
+            }
+
+
+            IRow headerRow = sheet.GetRow(0);
+            int cellCount = headerRow.LastCellNum;
+
+            List<DeviceInfoDisSturct_MC> retList = new List<DeviceInfoDisSturct_MC>();
+
+
+            for (int j = 0; j < cellCount; j++)
+            {
+                ICell cell = headerRow.GetCell(j);
+                if (cell == null || string.IsNullOrWhiteSpace(cell.ToString())) continue;
+                {
+                    dtTable.Columns.Add(cell.ToString());
+                }
+            }
+            for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
+            {
+                IRow row = sheet.GetRow(i);
+                if (row == null) continue;
+                if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
+
+                int columnNumber = getCellIndexByName(headerRow, columnName);
+                string str = Convert.ToString(row.GetCell(columnNumber));
+                if (string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str)) continue;
+
+                var v = new DeviceInfoDisSturct_MC();
+
+                for (int j = row.FirstCellNum; j < cellCount; j++)
+                {
+                    if (j == getCellIndexByName(headerRow, "工位序号"))
+                    {
+                        v.stationNumber = Convert.ToInt32(row.GetCell(j).NumericCellValue);
+                    }
+                    else if (j == getCellIndexByName(headerRow, "工位名称"))
+                    {
+                        v.stationName = Convert.ToString(row.GetCell(j));
+                    }
+                    else if (j == (columnNumber))
+                    {
+                        string temp = Convert.ToString(row.GetCell(j));
+                        //varName
+                        v.varName = temp;          
+
+                        //varType
+                        temp = Convert.ToString(headerRow.GetCell(j));
+                        if (!(string.IsNullOrEmpty(temp) || string.IsNullOrWhiteSpace(temp)))
+                        {
+                            Regex r = new Regex(@"\((\w+)\)");
+                            var ms = r.Matches(getNewString(temp));
+                            if (ms.Count > 0)
+                                v.varType = ms.ToArray()[0].Groups[1].Value;
+
+                        }
+                    }
+                }
+                retList.Add(v);
+            }
+            return retList.ToArray();
+        }
+
+
 
         /// <summary>
         /// 文件是否被打开
@@ -591,6 +716,195 @@ namespace Ph_Mc_ZhuYeJi
         }
 
 
+        /// <summary>
+        /// 往Excel指定列写数据
+        /// </summary>
+        /// <param name="ExcelPath">excel文件路径</param>
+        /// <param name="sheetname">Excel sheet名字</param>
+        /// <param name="columnName">要写入列的名称（从0开始）</param>
+        /// <param name="value">写入的数据（数组）</param>
+        /// <returns></returns>
+        /// <summary>
+        /// 往Excel指定列写数据
+        /// </summary>
+        /// <param name="ExcelPath">excel文件路径</param>
+        /// <param name="sheetname">Excel sheet名字</param>
+        /// <param name="columnName">要写入列的名称</param>
+        /// <param name="value">写入的数据（数组）</param>
+        /// <returns></returns>
+        public bool setExcelCellValue(String ExcelPath, String sheetname, string columnName, object value)
+        {
+            bool returnb = false;
+            XSSFWorkbook wk = null;
+            try
+            {
+                //读取Excell
+                using (FileStream stream = new FileStream(ExcelPath, FileMode.Open))
+                {
+                    stream.Position = 0;
+                    wk = new XSSFWorkbook(stream);
+                    stream.Close();  //把xls文件读入workbook变量里，之后就可以关闭了
+                }
+
+                //写值到sheet
+                ISheet sheet = wk.GetSheet(sheetname);
+                IRow headerRow = sheet.GetRow(0);
+                int column = getCellIndexByName(headerRow, columnName);
+
+                if (value.GetType() == typeof(stringStruct[]))
+                {
+                    stringStruct[] values = (stringStruct[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(values[i].StringValue);
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(string[]))
+                {
+                    string[] values = (string[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(values[i]);
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(bool[]))
+                {
+                    bool[] values = (bool[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(float[]))
+                {
+                    float[] values = (float[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(int[]))
+                {
+                    int[] values = (int[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(Int16[]))
+                {
+                    Int16[] values = (Int16[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(Int32[]))
+                {
+                    Int32[] values = (Int32[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(Int64[]))
+                {
+                    Int64[] values = (Int64[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(byte[]))
+                {
+                    byte[] values = (byte[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(char[]))
+                {
+                    char[] values = (char[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+                if (value.GetType() == typeof(double[]))
+                {
+                    double[] values = (double[])value;
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (i < sheet.LastRowNum && sheet.GetRow(i + 1) != null)
+                        {
+                            sheet.GetRow(i + 1).CreateCell(column).SetCellValue(Convert.ToString(values[i]));
+
+                        }
+                    }
+                }
+
+                //写入Excell
+                using (FileStream stream = File.Create(ExcelPath))
+                {
+                    wk.Write(stream);
+                    stream.Close();
+                }
+
+
+                returnb = true;
+            }
+            catch (Exception)
+            {
+                returnb = false;
+                throw;
+            }
+
+            return returnb;
+
+
+        }
 
 
 
@@ -599,6 +913,72 @@ namespace Ph_Mc_ZhuYeJi
 
 
 
+
+        /// <summary>
+        /// 将带有a-f的字符串 变为10-15   248a 转为24810
+        /// </summary>
+        /// <param name="hexString">原字符串</param>
+
+        /// <returns></returns>
+
+        public string HexStringToDecimalString(string hexString)
+        {
+            // Convert hex string to upper case for consistency
+            hexString = hexString.ToUpper();
+
+            // Find the first non-digit character (this is where hex chars start)
+            int hexStartIndex = 0;
+            while (hexStartIndex < hexString.Length && Char.IsDigit(hexString[hexStartIndex]))
+            {
+                hexStartIndex++;
+            }
+
+            // Convert the non-digit part (prefix) directly
+            string prefix = hexString.Substring(0, hexStartIndex);
+
+            // Convert each character after the prefix
+            string suffix = "";
+            for (int i = hexStartIndex; i < hexString.Length; i++)
+            {
+                char c = hexString[i];
+                if (c >= '0' && c <= '9')
+                {
+                    suffix += c;
+                }
+                else if (c >= 'A' && c <= 'F')
+                {
+                    suffix += (c - 'A' + 10).ToString();
+                }
+                else
+                {
+                    throw new ArgumentException($"Invalid hex character '{c}' in input string.");
+                }
+            }
+
+            return prefix + suffix;
+        }
+
+        /// <summary>
+        /// 对于B 区域的数据，将2001 2002 补齐为 20001 20002 
+        /// </summary>
+        /// <param name="hexString">原字符串</param>
+        public string InsertZeroBeforeLast(string number)
+        {
+            if (number.Length < 2)
+            {
+                // 如果字符串长度小于2，则无法插入'0'在倒数第二个位置  
+                return number;
+            }
+
+            // 创建一个新的字符串构建器  
+            var sb = new System.Text.StringBuilder(number);
+
+            // 在倒数第二个位置插入'0'  
+            sb.Insert(number.Length - 1, '0');
+
+            // 返回新的字符串  
+            return sb.ToString();
+        }
 
     }
 

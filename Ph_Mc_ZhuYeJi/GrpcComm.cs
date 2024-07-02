@@ -249,6 +249,7 @@ namespace Ph_Mc_ZhuYeJi
                     if (Convert.ToString(dataAccessServiceWriteResponse.ReturnValue[i]) != "DaeNone")
                     {
                         result = false;
+                        Console.WriteLine("dataAccessServiceWriteResponse.ReturnValue---{0}:   {1})", i, dataAccessServiceWriteResponse.ReturnValue[i]);
                     }
                 }
             }
