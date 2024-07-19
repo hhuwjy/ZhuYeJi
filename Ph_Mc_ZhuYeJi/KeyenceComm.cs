@@ -158,95 +158,37 @@ namespace Ph_Mc_ZhuYeJi
 
         public void ReadDeivceInfoStruct(DeviceInfoDisSturct_MC[] input, KeyenceMcNet mc, ref AllDataReadfromMC allDataReadfromMC, ref UDT_StationListInfo StationListInfo)
         {
-            //// TO DO LIST 这里点表有问题，读取变量名读不上来，所以程序后续需要对应修改
 
-            for (int i = 0; i < input.Length; i++)
+            string temp = "";
+                   
+            var ReadObject = input[0].varName;
+            ReadObject = ReadObject.Remove(6);
+
+            OperateResult<string> ret = mc.ReadString(ReadObject, 10);
+
+            if (ret.IsSuccess)
             {
-                if (i == 0)// 处理第一行
-                {
+                //var temp = tool.ConvertIntArrayToAscii(ret.Content, 0, 9);
+                temp = ret.Content;
 
-                    var ReadObject = input[i].varName;
-                    string pattern = @"\[0-49\]";
-                    ReadObject = Regex.Replace(ReadObject, pattern, "");
+                StationListInfo.arrDataPoint[input[0].stationNumber - 1].strCellCode = ret.Content;
 
-                    OperateResult<int[]> ret = mc.ReadInt32(ReadObject, 50);
-                    if (ret.IsSuccess)
-                    {
-                        var temp = tool.ConvertIntArrayToAscii(ret.Content, 0, 49);
+                allDataReadfromMC.BarCode[0] = temp;
 
-                        //Output[i] = temp;
-
-                        if (input[1].varName == "DM100-DM108")
-                        {
-                            allDataReadfromMC.BarCode[i] = temp;
-                            StationListInfo.arrDataPoint[input[i].stationNumber - 1].strCellCode = temp.ToString();
-
-                        }
-                        else
-                        {
-                            allDataReadfromMC.EarCode[i] = temp;
-                            StationListInfo.arrDataPoint[input[i].stationNumber - 1].strPoleEarCode = temp.ToString();
-                        }
-                    }
-                    else
-                    {
-                        //logNet.WriteInfo("[MC]", ReadObject + "读取失败");
-                        //Console.WriteLine(ReadObject + " Read failed");
-
-                        // 测试用
-                        allDataReadfromMC.BarCode[i] = "read failed";
-                        StationListInfo.arrDataPoint[input[i].stationNumber - 1].strCellCode = "read failed";
-                        allDataReadfromMC.EarCode[i] = "read failed";
-                        StationListInfo.arrDataPoint[input[i].stationNumber - 1].strPoleEarCode = "read failed";
-
-                    }
-
-                }
-
-                else if (i == 1)
-                {
-                    //处理第二行
-
-                    var ReadObject = input[i].varName;
-                    ReadObject = ReadObject.Remove(5);
-
-                    OperateResult<int[]> ret = mc.ReadInt32(ReadObject, 5);
-
-                    if (ret.IsSuccess)
-                    {
-                        var temp = tool.ConvertIntArrayToAscii(ret.Content, 0, 4);
-
-                        //Output[i].Append(temp);
-
-                        if (input[1].varName == "DM100-DM108")
-                        {
-                            allDataReadfromMC.BarCode[i] =temp;
-                            StationListInfo.arrDataPoint[input[i].stationNumber - 1].strCellCode = temp.ToString();
-
-                        }
-                        else
-                        {
-                            allDataReadfromMC.EarCode[i] =temp;
-                            StationListInfo.arrDataPoint[input[i].stationNumber - 1].strPoleEarCode = temp.ToString();
-                        }
-
-                    }
-                    else
-                    {
-                        logNet.WriteInfo("[MC]", ReadObject + "读取失败");
-                        //Console.WriteLine(ReadObject + " Read failed");
-
-                    }
-
-                }
-
-                else
-                {
-                    continue;
-                }
+                //Console.WriteLine("BarCode 的 ret.Content = {0}", ret.Content);
+                //logNet.WriteInfo("-------------HSL 读取到的原数据: "+  ret.Content + "------------");
+                        
+            }
+            else
+            {
+                logNet.WriteInfo("[MC]", ReadObject + "读取失败");
+                //Console.WriteLine(ReadObject + " Read failed");
 
             }
 
+            
+
+            
 
 
         }

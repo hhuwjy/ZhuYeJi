@@ -97,6 +97,12 @@ namespace Ph_Mc_ZhuYeJi
                 structV = new UserStruct().getTypeStruct_StationInfoStruct_IEC(StructValue);
             }
 
+            if (stru.GetType() == typeof(DeviceInfoStructList_IEC))
+            {
+                DeviceInfoStructList_IEC StructValue = (DeviceInfoStructList_IEC)stru;
+                structV = new UserStruct().getTypeStruct_DeviceInfoStructList_IEC(StructValue);
+            }
+
 
 
             /////  加
@@ -358,6 +364,24 @@ namespace Ph_Mc_ZhuYeJi
 
             }
 
+            if (Arr.GetType() == typeof(DeviceInfoStructList_IEC[]))
+            {
+                DeviceInfoStructList_IEC[] testStructArr = (DeviceInfoStructList_IEC[])Arr;
+
+                foreach (DeviceInfoStructList_IEC f in testStructArr)
+                {
+                    ObjectType objectType = new ObjectType();
+                    objectType.StructValue = getTypeStruct_DeviceInfoStructList_IEC(f);
+                    objectType.TypeCode = CoreType.CtStruct;
+                    ArrayV.ArrayElements.Add(objectType);
+                }
+
+            }
+
+
+
+
+
 
 
             return ArrayV;
@@ -606,7 +630,60 @@ namespace Ph_Mc_ZhuYeJi
             return structV;
         }
 
+        public struct DeviceInfoStructList_IEC
+        {
+            public short iCount;    //设备信息总览表里的终端数量
+            public DeviceInfoStruct_IEC[] arrDeviceInfo;
+
+            public DeviceInfoStructList_IEC()
+            {
+                iCount = 0;
+                arrDeviceInfo = new DeviceInfoStruct_IEC[30];
+
+                for (int i = 0; i < arrDeviceInfo.Length; i++)
+                {
+                    arrDeviceInfo[i].strDeviceName = "";
+                    arrDeviceInfo[i].strDeviceCode = "";
+                    arrDeviceInfo[i].iStationCount = 0;
+                    arrDeviceInfo[i].strPLCType = "";
+                    arrDeviceInfo[i].strProtocol = "";
+                    arrDeviceInfo[i].strIPAddress = "";
+                    arrDeviceInfo[i].iPort = 0;
+
+                }
+            }
+
+        }
+        public TypeStruct getTypeStruct_DeviceInfoStructList_IEC(DeviceInfoStructList_IEC StructValue)
+        {
+
+            TypeStruct structV = new TypeStruct();
+
+            ObjectType v0 = new ObjectType();
+            v0.Int16Value = StructValue.iCount;
+            v0.TypeCode = CoreType.CtInt16;
+            structV.StructElements.Add(v0);
+
+
+            ObjectType v1 = new ObjectType();
+            v1.ArrayValue = getTypeArrray(StructValue.arrDeviceInfo);
+            v1.TypeCode = CoreType.CtArray;
+            structV.StructElements.Add(v1);
+
+
+            return structV;
+        }
+
+
+
+
+
         #endregion
+
+
+
+
+
 
         //将采集值写入Excel的结构体
         public struct AllDataReadfromMC
@@ -622,7 +699,7 @@ namespace Ph_Mc_ZhuYeJi
             //public StringBuilder[] BarCode;
             //public StringBuilder[] EarCode;
             public string[] BarCode;  
-            public string[] EarCode;
+
 
 
             public AllDataReadfromMC()
@@ -638,13 +715,10 @@ namespace Ph_Mc_ZhuYeJi
                 ///BarCode = new StringBuilder[2];
                 //EarCode = new StringBuilder[2];
                 BarCode = new string[2];
-                EarCode = new string[2];
+
                 for (int i = 0; i < BarCode.Length; i++)
                 {
                     BarCode[i] = " ";
-
-                    EarCode[i] = " ";
-
                 }
             }
         }
