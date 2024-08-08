@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\ph_mc_zhuyeji.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\ph_mc_zhuyeji.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\keyencecomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\keyencecomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\grpccomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\grpccomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\toolapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\toolapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\readfromexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,24 +31,12 @@
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\userstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\grpccomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\grpccomm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\ph_mc_zhuyeji.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\ph_mc_zhuyeji.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\grpcsubscribenodes\\grpcsubscribenodes_4793.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\grpcsubscribenodes\\grpcsubscribenodes_4793.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\grpcsubscribenodes\\grpcsubscribenodes_4790.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\grpcsubscribenodes\\grpcsubscribenodes_4790.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|d:\\2024\\work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\readfromstructarray\\zhuyeji_mc\\zhuyeji\\ph_mc_zhuyeji\\toolapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{088DE29B-F320-4F5A-87C9-532363873544}|Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj|solutionrelative:ph_mc_zhuyeji\\toolapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,21 +50,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ReadFromExcel.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\ReadFromExcel.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\ReadFromExcel.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\ReadFromExcel.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\ReadFromExcel.cs",
-              "ViewState": "AQIAAOkCAAAAAAAAAAAgwP8CAAA2AAAA",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAQwHgAAABTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T02:17:27.84Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Ph_Mc_ZhuYeJi.csproj",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\Ph_Mc_ZhuYeJi.csproj",
@@ -73,8 +72,7 @@
               "ViewState": "AQIAAAgAAAAAAAAAAAAkwBsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-06-04T08:51:22.889Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -82,33 +80,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "KeyenceComm.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\KeyenceComm.cs",
-              "ViewState": "AQIAAJ4AAAAAAAAAAAAwwLQAAAANAAAA",
+              "ViewState": "AQIAAJ4BAAAAAAAAAAAcwLgBAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T06:40:50.188Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-26T06:40:50.188Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "GrpcComm.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\GrpcComm.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\GrpcComm.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\GrpcComm.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\GrpcComm.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAADgvy8AAAAiAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAADgvygAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T03:13:19.983Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-26T03:13:19.983Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "GrpcSubscribeNodes_4790.xml",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes_4790.xml",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes_4790.xml",
@@ -116,21 +112,19 @@
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes_4790.xml",
               "ViewState": "AQIAAAwAAAAAAAAAAADwvyYAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-06-26T01:30:46.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-26T01:30:46.395Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "UserStruct.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\UserStruct.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\UserStruct.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\UserStruct.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\UserStruct.cs",
-              "ViewState": "AQIAAMQCAAAAAAAAAAAAANACAAAlAAAA",
+              "ViewState": "AQIAANcCAAAAAAAAAAAkwG4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-18T05:36:03.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-18T05:36:03.382Z"
             },
             {
               "$type": "Document",
@@ -140,14 +134,14 @@
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\Program.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\Program.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\Program.cs",
-              "ViewState": "AQIAABMBAAAAAAAAAAAAwBEBAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJoEAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T06:27:49.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "GrpcSubscribeNodes_4793.xml",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes_4793.xml",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes_4793.xml",
@@ -155,21 +149,19 @@
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\GrpcSubscribeNodes\\GrpcSubscribeNodes_4793.xml",
               "ViewState": "AQIAAB8AAAAAAAAAAADwvzYAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-06-17T02:44:04.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-17T02:44:04.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "ToolAPI.cs",
               "DocumentMoniker": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\ToolAPI.cs",
               "RelativeDocumentMoniker": "Ph_Mc_ZhuYeJi\\ToolAPI.cs",
               "ToolTip": "D:\\2024\\Work\\12-\u51A0\u5B87\u6570\u91C7\u9879\u76EE\\ReadFromStructArray\\ZhuYeJi_MC\\ZhuYeJi\\Ph_Mc_ZhuYeJi\\ToolAPI.cs",
               "RelativeToolTip": "Ph_Mc_ZhuYeJi\\ToolAPI.cs",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAiwG0AAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T07:15:27.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T07:15:27.498Z"
             }
           ]
         }

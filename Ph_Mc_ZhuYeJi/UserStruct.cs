@@ -104,6 +104,11 @@ namespace Ph_Mc_ZhuYeJi
             }
 
 
+            if (stru.GetType() == typeof(PLCStatus))
+            {
+                PLCStatus StructValue = (PLCStatus)stru;
+                structV = new UserStruct().getTypeStruct_PLCStatus(StructValue);
+            }
 
             /////  加
             return structV;
@@ -378,6 +383,19 @@ namespace Ph_Mc_ZhuYeJi
 
             }
 
+            if (Arr.GetType() == typeof(PLCStatus[]))
+            {
+                PLCStatus[] testStructArr = (PLCStatus[])Arr;
+
+                foreach (PLCStatus f in testStructArr)
+                {
+                    ObjectType objectType = new ObjectType();
+                    objectType.StructValue = getTypeStruct_PLCStatus(f);
+                    objectType.TypeCode = CoreType.CtStruct;
+                    ArrayV.ArrayElements.Add(objectType);
+                }
+
+            }
 
 
 
@@ -1212,7 +1230,42 @@ namespace Ph_Mc_ZhuYeJi
         #endregion
 
 
+        #region PLC 状态码
 
+        public struct PLCStatus
+        {
+            public short iPLCCount;
+            public bool[] arrPLCStatus;
+
+            public PLCStatus()
+            {
+                iPLCCount = 0;
+                arrPLCStatus = new bool[10];
+            }
+        }
+        public TypeStruct getTypeStruct_PLCStatus(PLCStatus StructValue)
+        {
+            TypeStruct structV = new TypeStruct();
+
+            ObjectType v0 = new ObjectType();
+            v0.Int16Value = StructValue.iPLCCount;
+            v0.TypeCode = CoreType.CtInt16;
+            structV.StructElements.Add(v0);
+
+            ObjectType v1 = new ObjectType();
+            v1.ArrayValue = getTypeArrray(StructValue.arrPLCStatus);
+            v1.TypeCode = CoreType.CtArray;
+            structV.StructElements.Add(v1);
+
+
+
+            return structV;
+        }
+
+
+
+
+        #endregion
 
 
     }
