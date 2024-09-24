@@ -42,7 +42,7 @@ namespace Ph_Mc_ZhuYeJi
 
     class KeyenceComm
     {
-
+        public static ToolAPI tool = new ToolAPI();
 
         #region 读取设备信息（以数组形式一起读上来，再按照序号和偏移地址写入对应的工位里）
 
@@ -160,41 +160,83 @@ namespace Ph_Mc_ZhuYeJi
         {
 
             string temp = "";
-                   
+
             var ReadObject = input[0].varName;
             ReadObject = ReadObject.Remove(6);
 
-            OperateResult<string> ret = mc.ReadString(ReadObject, 10);
-
-            if (ret.IsSuccess)
+            OperateResult<byte[]> ret_2 = mc.Read(ReadObject, 10);
+            if (ret_2.IsSuccess)
             {
-                //var temp = tool.ConvertIntArrayToAscii(ret.Content, 0, 9);
-                temp = ret.Content;
+                var result = SwapPairs(ret_2.Content);
 
-                StationListInfo.arrDataPoint[input[0].stationNumber - 1].strCellCode = ret.Content;
+                temp = mc.ByteTransform.TransString(result, Encoding.ASCII);
+    
+                StationListInfo.arrDataPoint[input[0].stationNumber - 1].strCellCode = temp;
 
-                allDataReadfromMC.BarCode[0] = temp;
-
-                //Console.WriteLine("BarCode 的 ret.Content = {0}", ret.Content);
-                //logNet.WriteInfo("-------------HSL 读取到的原数据: "+  ret.Content + "------------");
-                        
+                //allDataReadfromMC.BarCode[0] = temp;
             }
             else
             {
                 logNet.WriteInfo("[MC]", ReadObject + "读取失败");
-                //Console.WriteLine(ReadObject + " Read failed");
+   
 
             }
 
-            
-
-            
-
 
         }
-        
+
 
         #endregion
+
+        // 将字符串的高低位反一下
+        public string SwapPairs(string input)
+        {
+            StringBuilder sb = new StringBuilder(input.Length);
+
+            for (int i = 0; i < input.Length - 1; i += 2)
+            {
+                // 如果索引是偶数（且不是最后一个字符），则交换  
+                if (i + 1 < input.Length)
+                {
+                    sb.Append(input[i + 1]); // 添加后面的字符  
+                    sb.Append(input[i]);     // 添加前面的字符  
+                }
+                else
+                {
+                    // 如果索引是奇数且是最后一个字符，则直接添加  
+                    sb.Append(input[i]);
+                }
+            }
+
+            return sb.ToString();
+        }
+
+
+        public byte[] SwapPairs(byte[] input)
+        {
+            byte[] result = new byte[input.Length];
+
+            for (int i = 0; i < input.Length - 1; i += 2)
+            {
+                // 如果索引是偶数（且不是最后一个字符），则交换  
+                if (i + 1 < input.Length)
+                {
+                    result[i] = input[i + 1];
+                    result[i + 1] = input[i];
+
+                   // sb.Append(input[i + 1]); // 添加后面的字符  
+                   //sb.Append(input[i]);     // 添加前面的字符  
+                }
+                else
+                {
+                    // 如果索引是奇数且是最后一个字符，则直接添加  
+                    //sb.Append(input[i]);
+                    result[i] = input[i];
+                }
+            }
+
+            return result;
+        }
 
 
 
@@ -216,14 +258,14 @@ namespace Ph_Mc_ZhuYeJi
                             {
                                 var index = input[i].varOffset - 607;
                                 senddata[i] = (float)(DMarray[index] / Math.Pow(10, input[i].varMagnification));
-                                allDataReadfromMC.ZhuYeWeiValue[i] = senddata[i].ToString();
+                                //allDataReadfromMC.ZhuYeWeiValue[i] = senddata[i].ToString();
                                 ProcessStationDataValue.arrDataPoint[0].arrDataPoint[i].StringValue = senddata[i].ToString();
 
                             }
                             else
                             {
                                 senddata[i] = (float)(DM1814 / Math.Pow(10, input[i].varMagnification));
-                                allDataReadfromMC.ZhuYeWeiValue[i] = senddata[i].ToString();
+                                //allDataReadfromMC.ZhuYeWeiValue[i] = senddata[i].ToString();
                                 ProcessStationDataValue.arrDataPoint[0].arrDataPoint[i].StringValue = senddata[i].ToString();
 
                             }
@@ -241,14 +283,14 @@ namespace Ph_Mc_ZhuYeJi
                             {
                                 var index = input[i].varOffset - 607;
                                 senddata[i] = (float)(DMarray[index] / Math.Pow(10, input[i].varMagnification));
-                                allDataReadfromMC.JingZhiWeiValue[i] = senddata[i].ToString();
+                                //allDataReadfromMC.JingZhiWeiValue[i] = senddata[i].ToString();
                                 ProcessStationDataValue.arrDataPoint[1].arrDataPoint[i].StringValue = senddata[i].ToString();
 
                             }
                             else
                             {
                                 senddata[i] = (float)(DM1814 / Math.Pow(10, input[i].varMagnification));
-                                allDataReadfromMC.JingZhiWeiValue[i] = senddata[i].ToString();
+                                //allDataReadfromMC.JingZhiWeiValue[i] = senddata[i].ToString();
                                 ProcessStationDataValue.arrDataPoint[1].arrDataPoint[i].StringValue = senddata[i].ToString();
                             }
                         }
@@ -271,21 +313,21 @@ namespace Ph_Mc_ZhuYeJi
 
             for (int i = 0; i < input.Length; i++)
             {
-                if (input[i].varName.Length == 8)
+                if (i< 8 && i>=0 )
                 {
 
                     var index = input[i].varOffset - 200200;
                     senddata[i] = (float)(ZFarray1[index]/Math.Pow(10, input[i].varMagnification));
-                    allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
+                    //allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
                     ProcessStationDataValue.arrDataPoint[2].arrDataPoint[i].StringValue = senddata[i].ToString();
 
                 }
-                else if (input[i].varName.Length == 7)
+                else if ( i <16 && i>= 8)
                 {
 
-                    var index = input[i].varOffset - 20000;
+                    var index = input[i].varOffset - 200100;
                     senddata[i] = (float)(ZFarray2[index] / Math.Pow(10, input[i].varMagnification));
-                    allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
+                    //allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
                     ProcessStationDataValue.arrDataPoint[2].arrDataPoint[i].StringValue = senddata[i].ToString();
 
                 }
@@ -294,14 +336,14 @@ namespace Ph_Mc_ZhuYeJi
 
                     var index = input[i].varOffset - 607;
                     senddata[i] = (float)(DMarray[index] / Math.Pow(10, input[i].varMagnification));
-                    allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
+                    //allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
                     ProcessStationDataValue.arrDataPoint[2].arrDataPoint[i].StringValue = senddata[i].ToString();
 
                 }
                 else if (input[i].varName.Length == 6)
                 {
                     senddata[i] = (float)(DM1822 / Math.Pow(10, input[i].varMagnification));
-                    allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
+                    //allDataReadfromMC.FengZhuangValue[i] = senddata[i].ToString();
                     ProcessStationDataValue.arrDataPoint[2].arrDataPoint[i].StringValue = senddata[i].ToString();
                 }
             }
@@ -326,7 +368,7 @@ namespace Ph_Mc_ZhuYeJi
 
                         if (ret.IsSuccess)
                         {
-                            Array.Copy(ret.Content, 0, allDataReadfromMC.FunctionEnableValue, 0, ret.Content.Length);  //写入缓存区
+                            //Array.Copy(ret.Content, 0, allDataReadfromMC.FunctionEnableValue, 0, ret.Content.Length);  //写入缓存区
 
                             Array.Copy(ret.Content, 0, DeviceDataStruct.Value_FE, 0, ret.Content.Length);  //写入IEC结构体
 
@@ -349,7 +391,7 @@ namespace Ph_Mc_ZhuYeJi
  
                         if (ret.IsSuccess)
                         {
-                            Array.Copy(ret.Content, 0, allDataReadfromMC.ProductionDataValue, 0, ret.Content.Length);  //写入缓存区
+                            //Array.Copy(ret.Content, 0, allDataReadfromMC.ProductionDataValue, 0, ret.Content.Length);  //写入缓存区
 
                             Array.Copy(ret.Content, 0, DeviceDataStruct.Value_PD, 0, ret.Content.Length);  //写入IEC结构体
 
@@ -376,7 +418,7 @@ namespace Ph_Mc_ZhuYeJi
                             {
                                 var index = (input[i].varOffset - input[0].varOffset) / 2;
                                 //senddata[i] = ret.Content[index];
-                                allDataReadfromMC.LifeManagementValue[i] = ret.Content[index];
+                                //allDataReadfromMC.LifeManagementValue[i] = ret.Content[index];
                                 DeviceDataStruct.Value_LM[i] = (uint)ret.Content[index];
 
                             }
